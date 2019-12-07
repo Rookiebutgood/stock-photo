@@ -18,7 +18,6 @@ class ImageList extends React.Component {
       let arr =[];
       res.forEach((el)=>{
         arr.push([el.id,el.urls.small])
-        console.log(el)
       })
       this.setState({photoArr: arr})
     })
@@ -28,7 +27,9 @@ class ImageList extends React.Component {
     if(this.state.photoArr!=null){
       return (
         <div className = 'gallery' style={imageListStyle}>
-          {this.state.photoArr.map((el)=><Photo key ={el[0]}src={el[1]}/>)}
+          {this.state.photoArr.map((el)=>
+            <Photo key ={el[0]} id={el[0]} src={el[1]}/>
+          )}
         </div>
       )
     }else{

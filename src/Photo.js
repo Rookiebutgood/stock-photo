@@ -1,4 +1,5 @@
 import React from 'react';
+import  {Link} from 'react-router-dom'
 
 const photoStyle= {
   display: 'inline-block',
@@ -9,7 +10,9 @@ const photoStyle= {
 class Photo extends React.Component {
   render(){
   return (
-    <img className="photo" style={photoStyle} src={this.props.src}></img>
+    <Link to={`/photo/${this.props.id}`}>
+      <img className="photo" style={photoStyle} id={this.props.id} src={this.props.src}></img>
+    </Link>
   );
   }
 }
