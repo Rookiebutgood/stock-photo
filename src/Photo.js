@@ -35,9 +35,12 @@ function Photo(props) {
       </Link>
       {spanWithTitle}
     </div>
-    <a className='inline-block bg-green-500 hover:bg-green-700 text-white font-bold mt-3 py-2 px-4 rounded text-center' 
-    href={props.download} 
-    download target='_blank'>Жми чтобы скачать</a>
+    <a className='inline-block bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold mr-1 mt-3 py-2 px-4 rounded text-center' 
+       href={props.userLink} 
+       download target='_blank'>Посмотреть на автора</a>
+    <a className='inline-block bg-green-500 hover:bg-green-700 text-white text-sm font-bold ml-5 mt-3 py-2 px-4 rounded text-center' 
+       href={props.download} 
+       download target='_blank'>Жми чтобы скачать</a>
   </div>
 }
 

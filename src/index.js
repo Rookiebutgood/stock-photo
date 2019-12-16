@@ -4,7 +4,7 @@ import { Route, BrowserRouter as Router } from 'react-router-dom'
 import App from './App';
 import PhotoPage from './PhotoPage';
 
-import './output.css'
+import './tailwindStyle.css'
 
 const routing = (
     <Router>

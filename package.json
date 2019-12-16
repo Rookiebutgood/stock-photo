@@ -13,7 +13,7 @@
     "tailwindcss": "^1.1.4"
   },
   "scripts": {
-    "build:style":"yarn tailwind build src/style.css -o src/output.css",
+    "build:style":"yarn tailwind build src/style.css -o src/tailwindStyle.css",
     "start": "yarn build:style && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
