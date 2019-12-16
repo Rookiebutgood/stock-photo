@@ -6,19 +6,17 @@ const PUBLIC_KEY = '56889379e12b179fea9f6dc3d84f38d73a11ae82478f8355e1950a904557
 class ImageList extends React.Component {
 constructor(props){
   super(props);
-
-  this.state = {photoArr:null, searchValue:null};
+  this.state = {photoArr:null};
   this.search = this.search.bind(this);
   this.changeValue = this.changeValue.bind(this);
 }
 
 changeValue(event){
-  this.setState({searchValue: event.target.value})
-  this.search();
+  this.search(event.target.value);
 }
 
-search(){
-    fetch('https://api.unsplash.com/search/photos?query='+this.state.searchValue+'&client_id='+PUBLIC_KEY,{method:'GET'})
+search(key){
+    fetch('https://api.unsplash.com/search/photos?query='+key+'&client_id='+PUBLIC_KEY,{method:'GET'})
     .then(res=>res.json())
     .then(res=>{
       let arr = [];
@@ -36,10 +34,9 @@ search(){
 }
 
   componentDidMount() {
-    console.log()
     if(this.props.searchValue){
       this.setState({searchValue: this.props.searchValue})
-      this.search();
+      this.search(this.props.searchValue);
     }else{
       fetch('https://api.unsplash.com/photos/random?count=20&client_id='+PUBLIC_KEY,{method:'GET'})
       .then(res=>res.json())

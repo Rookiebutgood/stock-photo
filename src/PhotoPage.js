@@ -37,7 +37,7 @@ class PhotoPage extends React.Component {
              <Link to={{
                pathname: '/stock-photo',
                state: {
-                 searchValue: 'cats'
+                 searchValue: el.title
                }
              }}>
                <p className='inline-block bg-gray-400 m-2 px-2 py-1 rounded-lg'>{el.title}</p>

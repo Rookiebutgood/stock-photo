@@ -6,7 +6,8 @@ function App(props) {
   console.log(props.location)
   let imageList;
   if(props.location.state){
-    imageList = <ImageList searchValue={props.location.state}/>
+    console.log('yes')
+    imageList = <ImageList searchValue={props.location.state.searchValue}/>
   }else{
     imageList = <ImageList />
   }
