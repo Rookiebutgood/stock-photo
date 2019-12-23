@@ -1,19 +1,6 @@
 import React from 'react';
 import  {Link} from 'react-router-dom'
 
-// const photoStyle = {
-//   display: 'inline-block',
-//   margin: '0 0 1em',
-//   width: '100%'
-// }
-
-const linkStyle = {
-  textAlign: 'center',
-  display: 'block',
-  marginBottom: '20px',
-  fontSize: '26px'
-}
-
 const imgStyle={
   width: '100%'
 }
@@ -31,7 +18,8 @@ function Photo(props) {
         <img className="photo" 
           style={imgStyle} 
           id={props.id} 
-          src={props.src}></img>
+          src={props.src}
+          alt={props.description} />
       </Link>
       {spanWithTitle}
     </div>

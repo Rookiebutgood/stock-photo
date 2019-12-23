@@ -1,26 +1,22 @@
 import React from 'react';
 import Photo from './Photo';
-
-const PUBLIC_KEY = '56889379e12b179fea9f6dc3d84f38d73a11ae82478f8355e1950a9045575780'
+import PUBLIC_KEY  from './keys'
 
 class ImageList extends React.Component {
-constructor(props){
-  super(props);
-  this.state = {photoArr:null};
-  this.search = this.search.bind(this);
-  this.changeValue = this.changeValue.bind(this);
-}
+  state = {photoArr:null};
 
-changeValue(event){
+
+changeValue = (event) => {
   this.search(event.target.value);
 }
 
-search(key){
+search = (key) => {
+  if(key){
     fetch('https://api.unsplash.com/search/photos?query='+key+'&client_id='+PUBLIC_KEY,{method:'GET'})
     .then(res=>res.json())
     .then(res=>{
       let arr = [];
-      res.results.forEach((el)=>{
+      res.results.map((el)=>{
         let obj = {};
         obj.id = el.id 
         obj.url = el.urls.small
@@ -28,9 +24,9 @@ search(key){
         obj.description = el.description
         arr.push(obj)
       })
-      
       this.setState({photoArr: arr})
     })
+  }
 }
 
   componentDidMount() {
@@ -38,11 +34,11 @@ search(key){
       this.setState({searchValue: this.props.searchValue})
       this.search(this.props.searchValue);
     }else{
-      fetch('https://api.unsplash.com/photos/random?count=20&client_id='+PUBLIC_KEY,{method:'GET'})
+      fetch('https://api.unsplash.com/photos/random?count=20&client_id=' + PUBLIC_KEY,{method:'GET'})
       .then(res=>res.json())
       .then(res=>{
         let arr = [];
-        res.forEach((el)=>{
+        res.map((el)=>{
           let obj = {};
           obj.id = el.id 
           obj.url = el.urls.small

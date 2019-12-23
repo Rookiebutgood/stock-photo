@@ -1,18 +1,16 @@
 import React from 'react';
 import  {Link} from 'react-router-dom'
-const PUBLIC_KEY = '56889379e12b179fea9f6dc3d84f38d73a11ae82478f8355e1950a9045575780'
+import PUBLIC_KEY  from './keys'
 
 class PhotoPage extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {imageObj:null}
-  }
+
+    state = {imageObj:null}
 
   componentDidMount() {
-    let a =this.props.location.pathname.split('/')
-    a = a[a.length-1]
+    let idFromPath =this.props.location.pathname.split('/')
+    idFromPath = idFromPath[idFromPath.length-1]
     {
-      fetch(`https://api.unsplash.com/photos/${a}?client_id=${PUBLIC_KEY}`,{method:'GET'})
+      fetch(`https://api.unsplash.com/photos/${idFromPath}?client_id=${PUBLIC_KEY}`,{method:'GET'})
       .then(res=>res.json())
       .then( res=>{ this.setState( {imageObj: res} ) } )
     }
@@ -44,17 +42,6 @@ class PhotoPage extends React.Component {
              </Link>
              )}
             </div>
-
-            <div className='photoPage__group-right__numbers border-solid border border-gray-600 rounded-lg'>
-              <span>Downloads:{this.state.imageObj.downloads}</span>
-              <span>Views:{this.state.imageObj.views}</span>
-            </div>
-
-            <div className='photoPage__group-right__description border-solid border border-gray-600 rounded-lg'>
-             <p>{this.state.imageObj.description}</p>
-             <p>{this.state.imageObj.alt_description}</p>
-            </div>
-
           </div>
 
         </div>
